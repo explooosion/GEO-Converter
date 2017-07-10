@@ -1,0 +1,15 @@
+<h1>{{ title }}</h1>
+<button type="button" (click)="getAddr()">開始轉換</button>
+<div class="row">
+  <textarea autoGrow [(ngModel)]="addrText"></textarea>
+  <ul>
+    <li *ngFor="let item of addrArrResult; let i = index">
+      {{item.addr}} - {{item.lat}} , {{item.lng}}
+    </li>
+  </ul>
+</div>
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="7">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
