@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule, MapsAPILoader, GoogleMapsAPIWrapper, AgmDataLayer } from '@agm/core';
 
 import { GMapsService } from './service/gmaps.service';
-import { LayerService } from './service/layer.service';
 
 import { Marker } from './class/marker';
 
@@ -14,7 +13,7 @@ declare var google: any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [GMapsService, LayerService, Marker]
+  providers: [GMapsService, Marker]
 })
 export class AppComponent implements OnInit {
   title: string = 'GEO Converter';
@@ -31,7 +30,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     private gmapService: GMapsService,
-    private layerService: LayerService,
     private zone: NgZone,
     private marker: Marker
   ) { }
@@ -50,8 +48,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  gmap(addr: string) {
-    this.gmapService.getLatLan(addr)
+  async gmap(addr: string) {
+    await this.gmapService.getLatLan(addr)
       .subscribe(
       result => {
         //必須使用zone 觀察整個 view 否則會導致延遲
