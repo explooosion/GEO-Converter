@@ -4,7 +4,8 @@
   <textarea autoGrow [(ngModel)]="addrText"></textarea>
   <ul>
     <li *ngFor="let item of addrArrResult; let i = index">
-      {{item.addr}} - {{item.lat}} , {{item.lng}}
+      <span>{{item.addr}} - </span>
+      <input type="text" value=",{{item.lat}},{{item.lng}}">
     </li>
   </ul>
 </div>
