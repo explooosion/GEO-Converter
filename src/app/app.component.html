@@ -4,7 +4,9 @@
   <textarea autoGrow [(ngModel)]="addrText"></textarea>
   <ul>
     <li *ngFor="let item of addrArrResult; let i = index">
-      <span>{{item.addr}} - </span>
+      <a href="{{'https://www.google.com.tw/maps/@'+item.lat+','+item.lng+',20z?hl=zh-TW'}}" target="_blank">
+        <span>{{item.addr}} - </span>
+      </a>
       <input type="text" value=",{{item.lat}},{{item.lng}}">
     </li>
   </ul>
